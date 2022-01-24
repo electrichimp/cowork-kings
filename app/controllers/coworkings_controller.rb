@@ -1,0 +1,2 @@
+class CoworkingsController < ApplicationController
+end
