@@ -17,6 +17,7 @@ class CoworkingsController < ApplicationController
 
   def show
     @coworking = Coworking.find(params[:id])
+    @booking = Booking.new
   end
 
   def edit
