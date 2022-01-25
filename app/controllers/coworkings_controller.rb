@@ -1,5 +1,5 @@
 class CoworkingsController < ApplicationController
-  # before_action: set_coworking
+  before_action :set_coworking, only: ["update", "edit", "destroy"]
 
   def new
     @coworking = Coworking.new
@@ -21,16 +21,23 @@ class CoworkingsController < ApplicationController
   end
 
   def edit
-    @coworking = Coworking.find(params[:id])
   end
 
-  # def update
-  #   restaurant = Restaurant.find(params[:id])
-  #   restaurant.update(restaurant_params)
-  #   redirect_to restaurant_path(restaurant)
-  # end
+  def update
+    @coworking.update(coworking_params)
+    redirect_to coworking_path(@coworking)
+  end
+
+  def destroy
+    @coworking.destroy
+    redirect_to root_path
+  end
 
   private
+
+  def set_coworking
+    @coworking = Coworking.find(params[:id])
+  end
 
   def coworking_params
     params.require(:coworking).permit(:name, :address, :description, :price, :capacity)
