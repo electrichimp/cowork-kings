@@ -5,7 +5,7 @@ class PagesController < ApplicationController
 
   def my_visits
     if user_signed_in?
-      @visits = current_user.bookings
+      @bookings = current_user.bookings
     else
       redirect_to new_user_session_path
     end
@@ -13,7 +13,7 @@ class PagesController < ApplicationController
 
   def my_rentals
     if user_signed_in?
-      @visits = current_user.coworkings
+      @coworkings = current_user.coworkings
     else
       redirect_to new_user_session_path
     end
