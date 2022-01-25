@@ -17,7 +17,11 @@
           <h2 class="card-trip-pricing">$<%= coworking.price.round(2) %></h2>
           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
           </div>
+          <%= link_to "Editar", edit_coworking_path(coworking), class: "btn btn-primary" %>
+          <%= link_to "Eliminar coworking", coworking_path(coworking), method: :delete, class: "btn btn-primary" %>
       </div>
+
     <% end %>
+
   </div>
 </div>
