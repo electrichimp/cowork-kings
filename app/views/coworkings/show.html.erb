@@ -1,0 +1,13 @@
+<h1><%= @coworking.name %></h1>
+<h2>Capacidad<%= @coworking.capacity %></h2>
+
+
+<p><%= @coworking.description %></p>
+<p><%= @coworking.price %></p>
+
+
+<h3>Ubicación</h3>
+
+<p><%= @coworking.address %></p>
+
+<%= link_to "Reservar", booking_path, class: "btn btn-primary" %>
