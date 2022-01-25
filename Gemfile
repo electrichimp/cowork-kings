@@ -33,6 +33,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 # devise
 gem 'devise'
+# faker
+gem 'faker', '~> 1.6', '>= 1.6.6'
 
 group :development, :test do
   gem 'pry-byebug'
