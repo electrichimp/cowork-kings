@@ -1,9 +1,10 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: ["destroy"]
+  before_action :set_booking, only: ["destroy", "confirm"]
   def create
     @booking = Booking.new(booking_params)
     @booking.coworking = Coworking.find(params[:coworking_id])
     @booking.user = current_user
+    @booking.accepted = false
     if @booking.save
       redirect_to my_visits_path
     else
@@ -13,10 +14,13 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to my_visits_path
+    redirect_to my_rentals_path
   end
 
   def confirm
+    @booking.accepted = true
+    @booking.save
+    redirect_to my_rentals_path
   end
 
   private

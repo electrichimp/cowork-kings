@@ -21,7 +21,7 @@ class PagesController < ApplicationController
 
   def my_rentals
     if user_signed_in?
-      @coworkings = current_user.coworkings
+      @bookings = current_user.coworkings.map {|coworking| coworking.bookings}.flatten
     else
       redirect_to new_user_session_path
     end
