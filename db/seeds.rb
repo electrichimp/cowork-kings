@@ -54,7 +54,7 @@ User.all.each do |user|
       coworking: Coworking.where('user_id != ?', user).sample,
       user: user,
       start_date: start_date,
-      end_data: start_date + (rand(1..10) * 60 * 60 * 24),
+      end_date: start_date + (rand(1..10) * 60 * 60 * 24),
       accepted: false
     )
   end

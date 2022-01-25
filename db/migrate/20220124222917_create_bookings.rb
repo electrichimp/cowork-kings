@@ -4,7 +4,7 @@ class CreateBookings < ActiveRecord::Migration[6.1]
       t.references :coworking, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
       t.date :start_date
-      t.date :end_data
+      t.date :end_date
       t.boolean :accepted
 
       t.timestamps
