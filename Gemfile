@@ -35,6 +35,8 @@ gem 'simple_form'
 gem 'devise'
 # faker
 gem 'faker', '~> 1.6', '>= 1.6.6'
+# cloudinary
+gem 'cloudinary', '~> 1.16.0'
 
 group :development, :test do
   gem 'pry-byebug'
