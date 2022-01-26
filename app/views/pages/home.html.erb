@@ -22,7 +22,11 @@
             <p>rentado por <%= coworking.user.email %></p>
           </div>
           <h2 class="card-trip-pricing">$<%= coworking.price.round(2) %></h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <% if coworking.user.photo.attached? %>
+            <%= cl_image_tag coworking.user.photo.key, class: "card-trip-user avatar-bordered"%>
+          <% else %>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <% end %>
           </div>
       </div>
     <% end %>
