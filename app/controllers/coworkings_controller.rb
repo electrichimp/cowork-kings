@@ -40,6 +40,6 @@ class CoworkingsController < ApplicationController
   end
 
   def coworking_params
-    params.require(:coworking).permit(:name, :address, :description, :price, :capacity)
+    params.require(:coworking).permit(:name, :address, :description, :price, :capacity, :photo)
   end
 end
