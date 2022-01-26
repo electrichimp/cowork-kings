@@ -8,6 +8,12 @@
             <%= f.error_notification %>
 
             <div class="form-inputs">
+              <%= f.input :photo, required: true,
+                        autofocus: true, as: :file %>
+              <%= f.input :name,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "name" }%>
               <%= f.input :email,
                           required: true,
                           autofocus: true,
@@ -30,9 +36,6 @@
 
       </div>
 
-      <%# <div class="col-md-4 col-xs-12">
-      <div></div>
-      </div> %>
     </div>
   </div>
 </div>
