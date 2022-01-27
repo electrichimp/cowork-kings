@@ -37,13 +37,10 @@ gem 'devise'
 gem 'faker', '~> 1.6', '>= 1.6.6'
 # cloudinary
 gem 'cloudinary', '~> 1.16.0'
-<<<<<<< HEAD
 # geocoder
 gem 'geocoder'
-=======
 # pg_search
 gem 'pg_search', '~> 2.3.0'
->>>>>>> master
 
 group :development, :test do
   gem 'pry-byebug'
