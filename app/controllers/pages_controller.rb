@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     if params[:query].present?
-      @coworkings = Coworking.search_by_name_and_address(params[:query])
+      @coworkings = Coworking.search_by_name_and_address_and_description(params[:query])
     else
       @coworkings = Coworking.all
     end
