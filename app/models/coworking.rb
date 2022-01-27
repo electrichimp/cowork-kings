@@ -3,4 +3,5 @@ class Coworking < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_one_attached :photo
   has_many_attached :photos
+  has_many :reviews, dependent: :destroy
 end
