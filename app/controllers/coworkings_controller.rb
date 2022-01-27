@@ -19,6 +19,7 @@ class CoworkingsController < ApplicationController
   def show
     @coworking = Coworking.find(params[:id])
     @booking = Booking.new
+    @review = Review.new
 
     @marker = [{ lat: @coworking.latitude, lng: @coworking.longitude }] if @coworking.geocoded?
   end
