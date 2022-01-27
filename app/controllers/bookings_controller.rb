@@ -14,7 +14,11 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to my_rentals_path
+    if @booking.user == current_user
+      redirect_to my_visits_path
+    else
+      redirect_to my_rentals_path
+    end
   end
 
   def confirm
