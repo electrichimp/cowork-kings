@@ -1,5 +1,6 @@
 class CoworkingsController < ApplicationController
   before_action :set_coworking, only: ["update", "edit", "destroy"]
+  skip_before_action :authenticate_user!, only: :show
 
   def new
     @coworking = Coworking.new
@@ -18,6 +19,8 @@ class CoworkingsController < ApplicationController
   def show
     @coworking = Coworking.find(params[:id])
     @booking = Booking.new
+
+    @marker = [{ lat: @coworking.latitude, lng: @coworking.longitude }] if @coworking.geocoded?
   end
 
   def edit
