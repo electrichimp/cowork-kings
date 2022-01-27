@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "my_rentals", to: "pages#my_rentals"
   resources :coworkings, except: [:index] do
     resources :bookings, only: [:create]
-    resources :reviews,  only: [:create, :new]
+    resources :reviews,  only: [:create, :new, :destroy]
   end
   resources :bookings, only: [:destroy] do
     collection do
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
 
   end
-  resources :reviews, only: [:destroy]
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
