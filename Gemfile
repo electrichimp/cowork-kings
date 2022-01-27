@@ -37,6 +37,8 @@ gem 'devise'
 gem 'faker', '~> 1.6', '>= 1.6.6'
 # cloudinary
 gem 'cloudinary', '~> 1.16.0'
+# pg_search
+gem 'pg_search', '~> 2.3.0'
 
 group :development, :test do
   gem 'pry-byebug'
