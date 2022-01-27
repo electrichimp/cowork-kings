@@ -41,9 +41,9 @@ User.all.each do |user|
   rand(1..5).times do
     Coworking.create(
       name: Faker::Address.street_name,
-      address: "#{Faker::Address.street_address} #{Faker::Address.secondary_address}",
+      address: "Avenida Petit Thouars 2260 Lince Lima Peru",
       description: Faker::Lorem.sentence,
-      price: rand(50.0..200.0),
+      price: rand(50..200),
       capacity: rand(1..10),
       user: user
     )

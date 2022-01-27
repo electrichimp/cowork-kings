@@ -37,6 +37,8 @@ gem 'devise'
 gem 'faker', '~> 1.6', '>= 1.6.6'
 # cloudinary
 gem 'cloudinary', '~> 1.16.0'
+# geocoder
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry-byebug'
