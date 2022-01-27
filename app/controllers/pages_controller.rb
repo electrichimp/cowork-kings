@@ -2,7 +2,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @coworkings = Coworking.all
+    if params[:query].present?
+      @coworkings = Coworking.search_by_name_and_address_and_description(params[:query])
+    else
+      @coworkings = Coworking.all
+    end
   end
 
   def my_coworkings

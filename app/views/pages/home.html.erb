@@ -6,7 +6,15 @@
   </div>
 </div>
 <div class="container">
-  <h2 class="my-5">Coworkings disponible</h2>
+  <h2 class="my-5">Coworkings disponibles</h2>
+  <%= form_tag root_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a coworking"
+    %>
+    <%= submit_tag "Search", class: "btn btn-flat my-3" %>
+  <% end %>
   <div class="cards">
     <% @coworkings.each do |coworking| %>
       <div class="card-trip">
