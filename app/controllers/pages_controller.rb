@@ -7,6 +7,10 @@ class PagesController < ApplicationController
     else
       @coworkings = Coworking.all
     end
+
+    @markers = @coworkings.geocoded.map do |flat|
+      { lat: flat.latitude, lng: flat.longitude }
+    end
   end
 
   def my_coworkings

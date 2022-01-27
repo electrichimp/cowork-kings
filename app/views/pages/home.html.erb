@@ -2,41 +2,47 @@
   <div class="container">
     <h1>Reserva tu <strong>espacio creativo</strong>!</h1>
     <p>Encuentra el lugar ideal para tí, sin compromiso, siempre a tu alcance</p>
-    <a class="btn btn-flat" href="#">Buscar</a>
-  </div>
-</div>
-<div class="container">
-  <h2 class="my-5">Coworkings disponibles</h2>
-  <%= form_tag root_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a coworking"
-    %>
-    <%= submit_tag "Search", class: "btn btn-flat my-3" %>
-  <% end %>
-  <div class="cards">
-    <% @coworkings.each do |coworking| %>
-      <div class="card-trip">
-        <% if coworking.photo.present? %>
-          <%= cl_image_tag coworking.photo.key %>
-        <% else %>
-          <img src="https://images.unsplash.com/photo-1528508492773-4d8157f3bbfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2049&q=80" />
-        <% end %>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= link_to coworking.name, coworking_path(coworking) %></h2>
-            <p><%= coworking.description %></p>
-            <p>rentado por <%= coworking.user.email %></p>
-          </div>
-          <h2 class="card-trip-pricing">$<%= coworking.price.round(2) %></h2>
-          <% if coworking.user.photo.attached? %>
-            <%= cl_image_tag coworking.user.photo.key, class: "card-trip-user avatar-bordered"%>
-          <% else %>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-          <% end %>
-          </div>
-      </div>
+    <%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a coworking"%>
+      <%= submit_tag "Buscar", class: "btn btn-flat my-3" %>
     <% end %>
   </div>
+</div>
+
+<div class="cards-container">
+
+  <div>
+    <h2 class="my-5 pl-5">Coworkings disponibles</h2>
+    <div class="cards px-5">
+      <% @coworkings.each do |coworking| %>
+        <div class="card-trip">
+          <% if coworking.photo.present? %>
+            <%= cl_image_tag coworking.photo.key %>
+          <% else %>
+            <img src="https://images.unsplash.com/photo-1528508492773-4d8157f3bbfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2049&q=80" />
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= link_to coworking.name, coworking_path(coworking) %></h2>
+              <p><%= coworking.description %></p>
+              <p>rentado por <%= coworking.user.email %></p>
+            </div>
+            <h2 class="card-trip-pricing">$<%= coworking.price.round(2) %></h2>
+            <% if coworking.user.photo.attached? %>
+              <%= cl_image_tag coworking.user.photo.key, class: "card-trip-user avatar-bordered"%>
+            <% else %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+            <% end %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="map"
+     style="width: 600px; height: 1000px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="pk.eyJ1IjoiZWxlY3RyaWNoaW1wIiwiYSI6ImNreXg5NDcxdTAwNGsybm53ZjV3NGxobHQifQ.C9kz89noTKxkUscwAIE8Dg">
+  </div>
+
 </div>
