@@ -25,7 +25,18 @@
   <% end %>
 </div>
 
+<div class="container bg-g">
+  <div class="pt-5">
+      <h2>Esto dicen los usuarios</h2>
+  </div>
 
+  <div class="row">
+    <div class="col-md-12">
+    <%= link_to "Add Review", new_coworking_review_path(@coworking) %>
+      <%= render @coworking.reviews %>
+    </div>
+  </div>
+</div>
 
 
 
