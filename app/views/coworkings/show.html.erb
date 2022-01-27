@@ -63,5 +63,40 @@
       <span class="sr-only">Next</span>
     </button>
   </div>
+
+
+  <h1><%= @coworking.name %></h1>
+  <h2>Capacidad<%= @coworking.capacity %></h2>
+
+
+  <p><%= @coworking.description %></p>
+  <p><%= @coworking.price %></p>
+
+
+  <h3>Ubicación</h3>
+
+  <p><%= @coworking.address %></p>
+
+  <%= simple_form_for([@coworking, @booking]) do |f| %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.button :submit, class: "btn-primary" %>
+  <% end %>
+</div>
+
+
+
+<div class="container bg-g">
+  <div class="pt-5">
+      <h2>Esto dicen los usuarios</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+    <%= link_to "Add Review", new_coworking_review_path(@coworking) %>
+      <%= render @coworking.reviews %>
+    </div>
+  </div>
+</div>
 <%
 =end%>
