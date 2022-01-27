@@ -15,13 +15,16 @@
         <% end %>
         <div class="card-trip-infos">
           <div>
-            <h2><%= link_to booking.coworking.name, coworking_path(booking) %></h2>
+            <h2><%= link_to booking.coworking.name, coworking_path(booking.coworking) %></h2>
             <p>rentado por <%= booking.user.email %></p>
+            <p>Desde: <%= booking.start_date.strftime('%d %b') %> | Hasta: <%= booking.end_date.strftime('%d %b') %></p>
           </div>
           <h2 class="card-trip-pricing">$<%= booking.coworking.price.round(2) %></h2>
           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
           </div>
-          <%= link_to "Cancelar reserva", booking_path(booking), method: :delete, class: "btn btn-primary" %>
+          <div>
+            <%= link_to "Cancelar reserva", booking_path(booking), method: :delete, class: "btn btn-primary" %>
+          </div>
       </div>
     <% end %>
   </div>
