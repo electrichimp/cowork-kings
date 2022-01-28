@@ -40,6 +40,17 @@ require 'faker'
 
 address_list = Geocoder.search("Province of Lima, Lima Metropolitan Area, Lima, Peru")
 
+comments = [
+  "Me gusto mucho, muy bonito ambiente y muy tranquilo! Volvería",
+  "Lo recomiendo, vale la pena darle una visita",
+  "No esperaba que me guste tanto, pero me ha encantado",
+  "Muy facil acceso y gran atención",
+  "Un excelente lugar para conectar con otros profesionales",
+  "Hacen un cafe increible, y para mi eso es suficiente",
+  "Wow, que tales oficinas",
+  "Pet friendly, POR FIN! Ahora si puedo trabajar feliz"
+]
+
 ["Harry Potter", "Hermione Granger", "Ron Weasley",
  "Draco Malfoy", "Luna Lovegood", "Albus Dumbledore",
  "Tom Riddle", "Severus Snape", "Cho Chang",
@@ -66,12 +77,19 @@ end
 User.all.each do |user|
   rand(3..10).times do
     start_date = rand(1.month).seconds.from_now
+    coworking = Coworking.where('user_id != ?', user).sample
     Booking.create(
-      coworking: Coworking.where('user_id != ?', user).sample,
+      coworking: coworking,
       user: user,
       start_date: start_date,
       end_date: start_date + (rand(1..10) * 60 * 60 * 24),
       accepted: false
+    )
+    Review.create(
+      rating: rand(3..5),
+      comment: comments.sample,
+      user: user,
+      coworking: coworking
     )
   end
 end
