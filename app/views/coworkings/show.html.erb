@@ -16,56 +16,61 @@
 <% end %>
 
 <div class="container">
-  <h4>Capacidad: <%= @coworking.capacity %> personas</h4>
 
   <div class="row">
     <div class="col-8 mb-3">
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <% if @coworking.photos.attached? %>
-            <% @coworking.photos.each do |photo| %>
+      <div class="book-card">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <% if @coworking.photos.attached? %>
+              <% @coworking.photos.each do |photo| %>
+                <div class="carousel-item">
+                  <%= cl_image_tag photo.key, style: "width: 100%; height: 300px; object-fit: cover;", class: "d-block w-100" %>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="carousel-item active">
+                <img style="width: 100%; height: 300px; object-fit: cover;" src="https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" class="d-block w-100" alt="...">
+              </div>
               <div class="carousel-item">
-                <%= cl_image_tag photo.key, style: "width: 100%; height: 300px; object-fit: cover;", class: "d-block w-100" %>
+                <img style="width: 100%; height: 300px; object-fit: cover;" src="https://images.unsplash.com/photo-1528508492773-4d8157f3bbfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2049&q=80" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img style="width: 100%; height: 300px; object-fit: cover;" src="https://images.unsplash.com/photo-1604328703693-18313fe20f3a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" class="d-block w-100" alt="...">
               </div>
             <% end %>
-          <% else %>
-            <div class="carousel-item active">
-              <img style="width: 100%; height: 300px; object-fit: cover;" src="https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img style="width: 100%; height: 300px; object-fit: cover;" src="https://images.unsplash.com/photo-1528508492773-4d8157f3bbfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2049&q=80" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img style="width: 100%; height: 300px; object-fit: cover;" src="https://images.unsplash.com/photo-1604328703693-18313fe20f3a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" class="d-block w-100" alt="...">
-            </div>
-          <% end %>
+          </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </button>
         </div>
-      <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </button>
+        <div class="mt-3">
+          <p><%= @coworking.description %></p>
+          <h3>Ubicación</h3>
+          <p><%= @coworking.address %></p>
+        </div>
       </div>
     </div>
     <div class="col-4">
-      <strong >S/<%= @coworking.price %> / día</strong>
-      <%= simple_form_for([@coworking, @booking]) do |f| %>
-        <%= f.input :start_date, :label => "Llegada"%>
-        <%= f.input :end_date, :label => "Salida"  %>
-        <%= f.button :submit, "Reservar" ,class: "btn-flat btn-block" %>
-      <% end %>
+      <div class="book-card">
+        <strong >S/<%= @coworking.price %> / día</strong>
+        <%= simple_form_for([@coworking, @booking]) do |f| %>
+          <%= f.input :start_date, :label => "Llegada"%>
+          <%= f.input :end_date, :label => "Salida"  %>
+          <%= f.button :submit, "Reservar" ,class: "btn-flat btn-block" %>
+        <% end %>
+      </div>
+      <div class="book-card-m0">
+        <h5>Capacidad: <%= @coworking.capacity %> persona(s)</h>
+        <h4 class="text-center"><%='<i class="far fa-user"></i> '.html_safe * @coworking.capacity %></h4>
+      </div>
     </div>
   </div>
-
-  <p><%= @coworking.description %></p>
-
-
-
-  <h3>Ubicación</h3>
-  <p><%= @coworking.address %></p>
 
   <div id="map"
     style="width: 100%; height: 300px;"
@@ -78,7 +83,7 @@
 
 <div class="container bg-g mb-5">
   <div class="pt-5">
-      <h2>Esto dicen los usuarios</h2>
+      <h3>Esto dicen los usuarios</h3>
   </div>
 
 
@@ -90,13 +95,13 @@
         <%= simple_form_for([@coworking, @review]) do |f| %>
           <%= f.input :rating, label: "Marca de 0 al 5"  %>
           <%= f.input :comment, label: "Comentario" %>
-          <%= f.button :submit, "Publicar review", class: "btn-flat btn-sm"  %>
+          <%= f.button :submit, "Publicar review", class: "btn-flat btn-md"  %>
         <% end %>
       <% else %>
         <div>
           <div class="card p-3 mb-3 ml-4">
             <p>Quieres comentar?</p>
-            <%= link_to "Inicia sesión", new_user_session_path, class: "btn-flat btn-sm text-center" %>
+            <%= link_to "Inicia sesión", new_user_session_path, class: "btn-flat btn-lg text-center" %>
           </div>
         </div>
       <% end %>
@@ -117,77 +122,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<%
-=begin%>
-
-
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://images.unsplash.com/photo-1528508492773-4d8157f3bbfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2049&q=80" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1528508492773-4d8157f3bbfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2049&q=80" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1528508492773-4d8157f3bbfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2049&q=80" class="d-block w-100" alt="...">
-      </div>
-    </div>
-  <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </button>
-  </div>
-
-
-  <h1><%= @coworking.name %></h1>
-  <h2>Capacidad<%= @coworking.capacity %></h2>
-
-
-  <p><%= @coworking.description %></p>
-  <p><%= @coworking.price %></p>
-
-
-  <h3>Ubicación</h3>
-
-  <p><%= @coworking.address %></p>
-
-  <%= simple_form_for([@coworking, @booking]) do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.button :submit, class: "btn-primary" %>
-  <% end %>
-</div>
-
-
-
-<div class="container bg-g">
-  <div class="pt-5">
-      <h2>Esto dicen los usuarios</h2>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-    <%= link_to "Add Review", new_coworking_review_path(@coworking) %>
-      <%= render @coworking.reviews %>
-    </div>
-  </div>
-</div>
-<%
-=end%>
