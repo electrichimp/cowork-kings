@@ -18,19 +18,8 @@
 <div class="container">
   <h2>Capacidad <%= @coworking.capacity %></h2>
 
-<<<<<<< HEAD
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @marker.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-
-  <h1><%= @coworking.name %></h1>
-  <h2>Capacidad<%= @coworking.capacity %></h2>
-
-=======
   <div class="row">
-    <div class="col-8 my-3">
+    <div class="col-8 mb-3">
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -54,15 +43,14 @@
       </div>
     </div>
     <div class="col-4">
-      <strong>S/<%= @coworking.price %> / día</strong>
+      <strong >S/<%= @coworking.price.round(2) %> / día</strong>
       <%= simple_form_for([@coworking, @booking]) do |f| %>
-        <%= f.input :start_date, :label => "Llegada" %>
+        <%= f.input :start_date, :label => "Llegada"%>
         <%= f.input :end_date, :label => "Salida"  %>
-        <%= f.button :submit, "Reservar" ,class: "btn-primary " %>
+        <%= f.button :submit, "Reservar" ,class: "btn-flat btn-block" %>
       <% end %>
     </div>
   </div>
->>>>>>> master
 
   <p><%= @coworking.description %></p>
 
