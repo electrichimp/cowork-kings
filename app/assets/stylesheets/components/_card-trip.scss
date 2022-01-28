@@ -1,3 +1,29 @@
+// CARDS CONTAINER
+
+.cards-container {
+  display: flex;
+  padding: 0 30px;
+}
+
+.cards-container > div {
+  flex-grow: 1;
+  max-width: 1000px;
+}
+
+.cards-container .cards {
+  // flex-grow: 1;
+}
+
+.cards-container #map {
+  width: 300px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+
+// CARD TRIP
+
 .card-trip {
   overflow: hidden;
   background: white;
@@ -70,7 +96,7 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -79,22 +105,4 @@
   .cards {
     grid-template-columns: 1fr 1fr 1fr;
   }
-}
-
-// CARDS CONTAINER
-
-.cards-container {
-  display: flex;
-  padding: 0 30px;
-}
-
-.cards-container .cards {
-  flex-grow: 1;
-}
-
-.cards-container #map {
-  width: 300px;
-  height: 100vh;
-  position: sticky;
-  top: 0;
 }

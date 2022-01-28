@@ -3,8 +3,8 @@
     <h1>My <strong>coworkings</strong>!</h1>
   </div>
 </div>
-<div class="container">
-  <h2 class="my-5">Tus propiedades</h2>
+<div class="container mb-5">
+  <h2 class="my-5">My coworkings</h2>
   <div class="cards">
     <% @coworkings.each do |coworking| %>
       <div class="card-trip">
@@ -18,11 +18,19 @@
             <h2><%= link_to coworking.name, coworking_path(coworking) %></h2>
             <p>Dueño: <%= coworking.user.email %></p>
           </div>
-          <h2 class="card-trip-pricing">$<%= coworking.price.round(2) %></h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+            <h2 class="card-trip-pricing">S/.<%= coworking.price.round(2) %></h2>
+
+            <% if coworking.user.photo.attached? %>
+              <%= cl_image_tag coworking.user.photo.key, class: "card-trip-user avatar-bordered"%>
+            <% else %>
+              <%= image_tag "https://toppng.com/uploads/preview/user-account-management-logo-user-icon-11562867145a56rus2zwu.png", class: "card-trip-user avatar-bordered"%>
+            <% end %>
           </div>
-          <%= link_to "Editar", edit_coworking_path(coworking), class: "btn btn-primary" %>
-          <%= link_to "Eliminar coworking", coworking_path(coworking), method: :delete, class: "btn btn-primary" %>
+          <div class="mx-3 mb-3">
+            <%= link_to "Editar", edit_coworking_path(coworking), class: "btn btn-primary" %>
+            <%= link_to "Eliminar coworking", coworking_path(coworking), method: :delete, class: "btn btn-danger" %>
+          </div>
+
       </div>
 
     <% end %>

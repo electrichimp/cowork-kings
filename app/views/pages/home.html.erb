@@ -24,10 +24,14 @@
           <div class="card-trip-infos">
             <div>
               <h2><%= link_to coworking.name, coworking_path(coworking) %></h2>
-              <p><%= coworking.description %></p>
-              <p>rentado por <%= coworking.user.email %></p>
+              <p style="display:inline-block;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        max-width: 30ch;"><%= coworking.description %></p>
+              <p>rentado por <%= coworking.user.name %></p>
             </div>
-            <h2 class="card-trip-pricing">$<%= coworking.price.round(2) %></h2>
+            <h2 class="card-trip-pricing">S/.<%= coworking.price %>/día</h2>
             <% if coworking.user.photo.attached? %>
               <%= cl_image_tag coworking.user.photo.key, class: "card-trip-user avatar-bordered"%>
             <% else %>
@@ -40,7 +44,6 @@
   </div>
 
   <div id="map"
-     style="width: 600px; height: 1000px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="pk.eyJ1IjoiZWxlY3RyaWNoaW1wIiwiYSI6ImNreXg5NDcxdTAwNGsybm53ZjV3NGxobHQifQ.C9kz89noTKxkUscwAIE8Dg">
   </div>
