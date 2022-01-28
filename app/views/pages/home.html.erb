@@ -27,7 +27,7 @@
               <p><%= coworking.description %></p>
               <p>rentado por <%= coworking.user.email %></p>
             </div>
-            <h2 class="card-trip-pricing">$<%= coworking.price.round(2) %></h2>
+            <h2 class="card-trip-pricing">S/.<%= coworking.price.round(2) %></h2>
             <% if coworking.user.photo.attached? %>
               <%= cl_image_tag coworking.user.photo.key, class: "card-trip-user avatar-bordered"%>
             <% else %>
