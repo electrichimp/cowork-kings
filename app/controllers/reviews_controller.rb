@@ -7,15 +7,14 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.coworking_id = @coworking.id
-    @review.user_id = current_user.id
+    @review.coworking = @coworking
+    @review.user = current_user
 
     if @review.save
+      redirect_to coworking_path(@coworking)
     else
-      render 'new'
+      render 'coworkings/show'
     end
-
-    redirect_to coworking_path(@coworking)
   end
 
   private
