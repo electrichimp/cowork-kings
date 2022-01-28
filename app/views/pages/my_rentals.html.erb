@@ -3,8 +3,8 @@
     <h1>My <strong>rentals</strong>!</h1>
   </div>
 </div>
-<div class="container">
-  <h2 class="my-5">Mis rentas</h2>
+<div class="container mb-5">
+  <h2 class="my-5">My rentals</h2>
   <div class="cards">
     <% @bookings.each do |booking| %>
       <div class="card-trip">
@@ -17,6 +17,7 @@
           <div>
             <h2><%= link_to booking.coworking.name, coworking_path(booking.coworking) %></h2>
             <p>Aquilado por: <%= booking.user.email %></p>
+            <p class="mb-3">Desde: <%= booking.start_date.strftime('%d %b') %> | Hasta: <%= booking.end_date.strftime('%d %b') %></p>
             <% unless booking.accepted %>
               <%= link_to "Confirmar", confirm_booking_path(booking), method: :patch, class: "btn btn-primary" %>
             <% end %>

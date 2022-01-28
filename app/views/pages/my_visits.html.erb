@@ -3,8 +3,8 @@
     <h1>My <strong>visits</strong>!</h1>
   </div>
 </div>
-<div class="container">
-  <h2 class="my-5">Tus reservas</h2>
+<div class="container mb-5">
+  <h2 class="my-5">My visits</h2>
   <div class="cards">
     <% @bookings.each do |booking| %>
       <div class="card-trip">
@@ -19,14 +19,18 @@
             <p>rentado por <%= booking.user.email %></p>
             <p>Desde: <%= booking.start_date.strftime('%d %b') %> | Hasta: <%= booking.end_date.strftime('%d %b') %></p>
           </div>
-          <h2 class="card-trip-pricing">$<%= booking.coworking.price.round(2) %></h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-          </div>
-          <div>
-            <%= link_to "Cancelar reserva", booking_path(booking), method: :delete, class: "btn btn-primary" %>
+          <h2 class="card-trip-pricing">S/<%= (booking.coworking.price.round(2)*(booking.end_date-booking.start_date + 1)).round(2) %></h2>
+          <% if booking.coworking.user.photo.attached? %>
+            <%= cl_image_tag booking.coworking.user.photo.key, class: "card-trip-user avatar-bordered"%>
+          <% else %>
+            <%= image_tag "https://toppng.com/uploads/preview/user-account-management-logo-user-icon-11562867145a56rus2zwu.png", class: "card-trip-user avatar-bordered"%>
+          <% end %>
+        </div>
+
+          <div class="mx-3 mb-3">
+            <%= link_to "Cancelar reserva", booking_path(booking), method: :delete, class: "btn btn-danger" %>
           </div>
       </div>
     <% end %>
   </div>
 </div>
- t
