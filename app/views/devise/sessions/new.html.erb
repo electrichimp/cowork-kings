@@ -16,7 +16,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Log in" %>
+          <%= f.button :submit, "Log in", class: "btn btn-flat" %>
         </div>
         <% end %>
 
@@ -25,3 +25,20 @@
     </div>
   </div>
 </div>
+
+
+<%
+=begin%>
+ <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="book-card-m0 mt-5 pt-5">
+        <h2>Crear coworking</h2>
+        <%= render "form", coworking: @coworking %>
+      </div>
+    </div>
+  </div>
+
+</div>
+<%
+=end%>

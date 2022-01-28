@@ -1,6 +1,11 @@
-
 <div class="container">
-  <h2>Editar coworking</h2>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="book-card-m0 mt-5 pt-5">
+        <h2>Editar coworking</h2>
+        <%= render "form", coworking: @coworking %>
+      </div>
+    </div>
+  </div>
 
-  <%= render "form", coworking: @coworking %>
 </div>

@@ -11,7 +11,7 @@
         <% if booking.coworking.photo.present? %>
           <%= cl_image_tag booking.coworking.photo.key %>
         <% else %>
-          <img src="https://images.unsplash.com/photo-1528508492773-4d8157f3bbfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2049&q=80" />
+          <img src="https://source.unsplash.com/1600x900/?office/<%= rand(1..30) %>" />
         <% end %>
         <div class="card-trip-infos">
           <div>

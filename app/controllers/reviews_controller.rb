@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.coworking = @coworking
     @review.user = current_user
+    @booking = Booking.new
 
     if @review.save
       redirect_to coworking_path(@coworking)

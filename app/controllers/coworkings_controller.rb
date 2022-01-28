@@ -34,7 +34,7 @@ class CoworkingsController < ApplicationController
 
   def destroy
     @coworking.destroy
-    redirect_to root_path
+    redirect_to my_coworkings_path
   end
 
   private
