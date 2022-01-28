@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :coworkings, dependent: :destroy
   has_one_attached :photo
   has_many :reviews
+
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
 end
